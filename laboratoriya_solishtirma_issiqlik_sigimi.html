@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>9-sinf fizika: Qattiq jismlarning solishtirma issiqlik sig'imini aniqlash</title>
+<style>
+:root{--bg:#f7f9fb;--card:#fff;--ink:#14263a;--mute:#5a6b7d;--line:#d9e1e9;--acc:#0f6e72;--soft:#e8f3f3;--warn:#fdf1e3;--warnl:#e8b26a}
+@media (prefers-color-scheme:dark){:root{--bg:#10181f;--card:#18232c;--ink:#e6edf3;--mute:#9db0c0;--line:#2a3a47;--soft:#14343a;--acc:#4fc3c8;--warn:#3a2c17;--warnl:#a77632}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Georgia,"Times New Roman",serif}
+main{max-width:760px;margin:0 auto;padding:20px 16px 60px}
+h1{font:700 26px/1.25 system-ui,sans-serif;margin:8px 0 4px}
+h2{font:600 20px/1.3 system-ui,sans-serif;margin:0 0 10px;color:var(--acc)}
+.sub{color:var(--mute);font:14px system-ui,sans-serif;margin:0 0 20px}
+section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin:16px 0}
+.f{background:var(--soft);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:18px;text-align:center}
+.warn{background:var(--warn);border-left:4px solid var(--warnl);padding:10px 14px;margin:10px 0;font-size:15px}
+ul,ol{padding-left:22px;margin:8px 0}
+table{width:100%;border-collapse:collapse;font:14px system-ui,sans-serif;margin:10px 0}
+th,td{border:1px solid var(--line);padding:8px;text-align:center}
+th{background:var(--soft)}
+td.e{height:30px}
+.sim label,.calc label{display:block;font:14px system-ui,sans-serif;color:var(--mute);margin:6px 0}
+.sim b{color:var(--ink)}
+input[type=range]{width:100%;accent-color:var(--acc)}
+input[type=number],select{width:100%;padding:8px;font:15px system-ui,sans-serif;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 18px}
+button{font:600 15px system-ui,sans-serif;padding:10px 16px;border-radius:8px;border:1px solid var(--acc);background:var(--acc);color:#fff;cursor:pointer}
+button.o{background:transparent;color:var(--acc)}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #2f7fd1;outline-offset:2px}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;font-family:system-ui,sans-serif}
+.res div{background:var(--soft);border-radius:8px;padding:10px;font-size:12px;color:var(--mute)}
+.res strong{display:block;font-size:18px;color:var(--ink)}
+.stage{font:600 14px system-ui,sans-serif;color:var(--acc);min-height:22px;margin:4px 0}
+details{border-top:1px solid var(--line);padding:8px 0}
+summary{cursor:pointer;font-weight:600}
+.ans{color:var(--acc);margin:6px 0 0}
+</style>
+</head>
+<body>
+<main>
+<h1>Qattiq jismlarning solishtirma issiqlik sig'imini aniqlash</h1>
+<p class="sub">9-sinf fizika · 1-bob · 20-§ Laboratoriya ishi</p>
+
+<section>
+<h2>1. Maqsad va jihozlar</h2>
+<p><b>Maqsad:</b> issiqlik muvozanati tenglamasi yordamida qattiq jism (metall) moddasining solishtirma issiqlik sig'imini tajribada aniqlash va jadval qiymati bilan solishtirish.</p>
+<p><b>Jihozlar:</b></p>
+<ul>
+<li>Kalorimetr</li><li>Tarozi va toshlar</li><li>Metall silindr (ip bilan bog'langan)</li>
+<li>Qaynoq suv (idishda yoki elektr choynakda)</li><li>Termometr</li><li>Sovuq suv, o'lchov stakani, sochiq</li>
+</ul>
+<p><b>Nazariya:</b> qizdirilgan jism kalorimetrdagi suvga tushganda issiqlik jismdan suvga o'tadi.</p>
+<div class="f">Q<sub>jism</sub> = Q<sub>suv</sub></div>
+<div class="f">c·m(t<sub>j</sub> − t) = c<sub>s</sub>·m<sub>s</sub>(t − t<sub>s</sub>)</div>
+<div class="f">c = c<sub>s</sub>·m<sub>s</sub>(t − t<sub>s</sub>) / [m(t<sub>j</sub> − t)]</div>
+<p>m, t<sub>j</sub> — jism massasi va boshlang'ich temperaturasi (qaynoq suvda ≈ 100 °C); m<sub>s</sub>, t<sub>s</sub> — kalorimetrdagi suv massasi va temperaturasi; t — umumiy muvozanat temperaturasi; c<sub>s</sub> = 4200 J/(kg·°C).</p>
+</section>
+
+<section class="sim">
+<h2>Animatsion simulyatsiya: to'liq tajriba</h2>
+<p style="font-size:15px;margin-top:0">Material va qiymatlarni tanlab «Boshlash» ni bosing. Jism qaynoq suvda qiziydi, kalorimetrga o'tkaziladi va muvozanatga keladi. «Issiqlik yo'qolishi» ni oshirib, tajriba xatoligi qanday paydo bo'lishini ko'ring.</p>
+<svg viewBox="0 0 340 190" width="100%" role="img" aria-label="Metall jism qaynoq suvda qiziydi va kalorimetrdagi suvga o'tkaziladi">
+<rect x="10" y="95" width="100" height="80" rx="4" fill="none" stroke="var(--mute)" stroke-width="1.5"/>
+<rect x="11" y="110" width="98" height="64" fill="#e2563b" opacity=".55"/>
+<g id="bub" fill="none" stroke="#fff" stroke-width="1.5" opacity=".0"><circle cx="30" cy="150" r="3"/><circle cx="85" cy="140" r="4"/><circle cx="60" cy="160" r="2.5"/></g>
+<path d="M30 185q10-6 20 0t20 0t20 0" stroke="#e2563b" fill="none" stroke-width="2"/>
+<rect x="195" y="70" width="115" height="105" rx="6" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+<rect id="cw" x="197" y="170" width="111" height="0" fill="#2f7fd1"/>
+<line id="th" x1="290" y1="40" x2="290" y2="120" stroke="var(--ink)" stroke-width="3"/>
+<line x1="125" y1="20" x2="125" y2="20"/>
+<line id="rope" x1="60" y1="20" x2="60" y2="130" stroke="var(--mute)" stroke-width="1"/>
+<rect id="blk" x="50" y="120" width="22" height="22" rx="2" fill="#2f7fd1" stroke="var(--ink)" stroke-width="1"/>
+<g font-size="12" fill="var(--mute)" text-anchor="middle" font-family="system-ui,sans-serif">
+<text x="60" y="188">Qaynoq suv</text><text x="252" y="188">Kalorimetr</text></g>
+<g font-size="13" fill="var(--ink)" font-family="system-ui,sans-serif" font-weight="600">
+<text id="tj" x="14" y="85">Jism: 20 °C</text><text id="tw" x="196" y="62">Suv: 20 °C</text></g>
+</svg>
+<div class="stage" id="stage" aria-live="polite">Tayyor</div>
+<div class="grid">
+<label>Material<select id="mat"><option value="920">Alyuminiy (920)</option><option value="460">Po'lat (460)</option><option value="380">Mis (380)</option><option value="130">Qo'rg'oshin (130)</option></select></label>
+<label>Jism massasi m: <b id="o1">100</b> g<input type="range" id="ms" min="50" max="200" step="10" value="100"></label>
+<label>Suv massasi: <b id="o2">200</b> g<input type="range" id="mw" min="100" max="300" step="10" value="200"></label>
+<label>Suv temperaturasi: <b id="o3">20</b> °C<input type="range" id="tw0" min="10" max="30" step="1" value="20"></label>
+<label style="grid-column:1/3">Issiqlik yo'qolishi: <b id="o4">3</b> %<input type="range" id="loss" min="0" max="15" step="1" value="3"></label>
+</div>
+<p><button id="go">Boshlash</button> <button id="rs" class="o">Qayta</button></p>
+<div class="res">
+<div>t (o'lchangan)<strong id="rt">–</strong></div>
+<div>c tajriba<strong id="rc">–</strong></div>
+<div>c jadval<strong id="rj">–</strong></div>
+<div>Nisbiy xatolik δ<strong id="rd">–</strong></div>
+</div>
+</section>
+
+<section>
+<h2>2. Ishni bajarish tartibi</h2>
+<div class="warn"><b>Xavfsizlik:</b> qaynoq suv va bug' kuydiradi. Jismni faqat ip bilan oling, suvni o'qituvchi nazoratida quying, shisha idishlarni ehtiyot qiling, elektr asboblarni quruq qo'l bilan ishlating.</div>
+<ol>
+<li><b>Jism massasini o'lchang.</b> Metall silindrni tarozida torting, m ni yozing (kg da).</li>
+<li><b>Jismni qizdiring.</b> Silindrni ipga bog'lab qaynayotgan suvga tushiring va 5–7 minut ushlang. Jismning temperaturasi qaynoq suv temperaturasiga teng (t<sub>j</sub> ≈ 100 °C) deb olinadi.</li>
+<li><b>Kalorimetrdagi suvni tayyorlang.</b> Kalorimetrga ~200 g xona haroratidagi suv quying, massasi m<sub>s</sub> va temperaturasi t<sub>s</sub> ni yozing. Suv jismni to'liq yopishi kerak.</li>
+<li><b>Jismni o'tkazing.</b> Qizigan jismni tez va suv sachramasdan kalorimetrga tushiring, qopqoqni yoping, suvni sekin aralashtiring.</li>
+<li><b>Muvozanat temperaturasini o'lchang.</b> Termometr ko'tarilishdan to'xtab, eng yuqori qiymatni ko'rsatganda t ni yozing.</li>
+<li>Tajribani boshqa massalar bilan 3 marta takrorlang.</li>
+</ol>
+</section>
+
+<section class="calc">
+<h2>3. Hisoblash</h2>
+<table>
+<tr><th>№</th><th>m (kg)</th><th>t<sub>j</sub> (°C)</th><th>m<sub>s</sub> (kg)</th><th>t<sub>s</sub> (°C)</th><th>t (°C)</th><th>c (J/kg·°C)</th></tr>
+<tr><td>1</td><td class="e"></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>2</td><td class="e"></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>3</td><td class="e"></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+<p><b>Namuna:</b> alyuminiy, m = 0,1 kg, t<sub>j</sub> = 100 °C; suv m<sub>s</sub> = 0,2 kg, t<sub>s</sub> = 20 °C; t = 27,9 °C.<br>
+c = 4200·0,2·(27,9 − 20) / [0,1·(100 − 27,9)] = 6636 / 7,21 ≈ <b>920 J/(kg·°C)</b>.</p>
+<p>Uchta tajribaning o'rtacha qiymati: c<sub>o'rt</sub> = (c₁ + c₂ + c₃)/3.</p>
+<p><b>Hisoblagich:</b> o'z natijangizni kiriting.</p>
+<div class="grid">
+<label>m (g)<input type="number" id="a1" value="100"></label>
+<label>t<sub>j</sub> (°C)<input type="number" id="a2" value="100"></label>
+<label>m<sub>s</sub> (g)<input type="number" id="a3" value="200"></label>
+<label>t<sub>s</sub> (°C)<input type="number" id="a4" value="20"></label>
+<label>t (°C)<input type="number" id="a5" value="27.9" step="0.1"></label>
+<label>c jadval (J/kg·°C)<input type="number" id="a6" value="920"></label>
+</div>
+<p><button id="calc">Hisoblash</button></p>
+<p id="cout" class="ans" aria-live="polite"></p>
+</section>
+
+<section>
+<h2>4. Xatoliklar va xulosa</h2>
+<div class="f">Δc = |c<sub>tajriba</sub> − c<sub>jadval</sub>|, δ = Δc / c<sub>jadval</sub> · 100 %</div>
+<p><b>Xatolik manbalari:</b></p>
+<ul>
+<li>Jism kalorimetrga o'tkazilguncha sovib qoladi (t<sub>j</sub> 100 °C dan past bo'ladi).</li>
+<li>Jism bilan birga kalorimetrga qaynoq suv tomchilari tushadi.</li>
+<li>Kalorimetr devori, aralashtirgich va termometr ham issiqlik oladi.</li>
+<li>Termometr aniqligi (bo'linma qiymati) va tarozi xatosi.</li>
+<li>Issiqlikning havoga tarqalishi.</li>
+</ul>
+<p><b>Kamaytirish yo'llari:</b> jismni tez o'tkazish, qopqoq ishlatish, jismni quritib olish, suvni yaxshi aralashtirish, tajribani takrorlab o'rtacha olish.</p>
+<p><b>Xulosa namunasi:</b> «Tajribada alyuminiy uchun c = ... J/(kg·°C) topildi, jadval qiymati 920 J/(kg·°C). Nisbiy xatolik δ = ... %. Natija jadvaldan farq qilishiga asosiy sabab issiqlikning atrofga yo'qolishi va jismning o'tkazish vaqtida sovishidir. Issiqlik muvozanati tenglamasi tajribada tasdiqlandi.»</p>
+</section>
+
+<section>
+<h2>Savollar</h2>
+<details><summary>1. Solishtirma issiqlik sig'imi nimani bildiradi?</summary><p class="ans">1 kg moddani 1 °C ga isitish uchun kerak bo'lgan issiqlik miqdorini.</p></details>
+<details><summary>2. Jismning boshlang'ich temperaturasini nega 100 °C deb olamiz?</summary><p class="ans">U qaynayotgan suvda uzoq turib, suv bilan muvozanatga kelgan, qaynayotgan suv esa ≈100 °C da bo'ladi.</p></details>
+<details><summary>3. Nega jismni kalorimetrga tez o'tkazish kerak?</summary><p class="ans">Havoda sovib qolmasligi, t<sub>j</sub> qiymati o'zgarmasligi uchun.</p></details>
+<details><summary>4. Natija jadvaldan odatda nega kichik chiqadi?</summary><p class="ans">Jism sovib qolgani va issiqlik yo'qolgani uchun t kamayadi, formulada c kichrayadi.</p></details>
+<details><summary>5. Simulyatsiyada yo'qotishni oshirsangiz, δ qanday o'zgaradi?</summary><p class="ans">δ ortadi, chunki o'lchangan t ideal qiymatdan pastroq bo'ladi.</p></details>
+</section>
+
+<section>
+<h2>Masalalar</h2>
+<details><summary>1. 200 g jism 100 °C dan 300 g suvga (20 °C) tushirildi, t = 25 °C bo'ldi. c = ?</summary><p class="ans">c = 4200·0,3·5 / (0,2·75) = 420 J/(kg·°C)</p></details>
+<details><summary>2. 0,5 kg po'lat (c = 460) 100 °C dan 30 °C gacha soviganda qancha issiqlik beradi?</summary><p class="ans">Q = 460·0,5·70 = 16 100 J</p></details>
+<details><summary>3. Tajribada c = 900, jadvalda 920 J/(kg·°C). δ = ?</summary><p class="ans">Δc = 20, δ = 20/920 · 100 % ≈ 2,2 %</p></details>
+</section>
+
+<section>
+<h2>Uyga vazifa</h2>
+<ol>
+<li>§20 ni o'qing, ish tartibi va formulani daftarga yozing.</li>
+<li>Laboratoriya hisobotini to'ldiring: jadval, hisob-kitob, xatolik, xulosa.</li>
+<li>Yuqoridagi 1- va 3-masalani to'liq yechim bilan bajaring.</li>
+<li>Simulyatsiyada 4 xil materialni sinab, yo'qotish 0 % va 10 % bo'lgandagi δ ni jadvalga yozing, farqni izohlang.</li>
+<li>Qo'shimcha: nima uchun suvning solishtirma issiqlik sig'imi metallnikidan ancha katta va bu dengiz iqlimiga qanday ta'sir qiladi? 4–5 gapda yozing.</li>
+</ol>
+</section>
+</main>
+<script>
+var $=function(i){return document.getElementById(i)},raf=null,TR=20;
+function col(T){var f=Math.max(0,Math.min(1,T/100)),a=[47,127,209],b=[226,86,59];return 'rgb('+a.map(function(v,i){return Math.round(v+(b[i]-v)*f)}).join(',')+')'}
+function P(){return{c:+$('mat').value,m:+$('ms').value,mw:+$('mw').value,tw:+$('tw0').value,loss:+$('loss').value}}
+function R(x,n){var k=Math.pow(10,n);return Math.round(x*k)/k}
+function draw(p,Tj,Tw,x,y,show){
+ var h=p.mw/300*70;
+ $('cw').setAttribute('y',170-h);$('cw').setAttribute('height',h);$('cw').setAttribute('fill',col(Tw));
+ var b=$('blk');b.setAttribute('x',x);b.setAttribute('y',y);b.setAttribute('fill',col(Tj));
+ var r=$('rope');r.setAttribute('x1',x+11);r.setAttribute('x2',x+11);r.setAttribute('y2',y);r.setAttribute('y1',Math.min(20,y));
+ $('tj').textContent='Jism: '+R(Tj,1)+' °C';$('tw').textContent='Suv: '+R(Tw,1)+' °C';
+ $('th').setAttribute('y2',120);$('th').setAttribute('y1',120-Math.max(5,Tw)*0.8);
+}
+function reset(){cancelAnimationFrame(raf);var p=P();
+ $('o1').textContent=p.m;$('o2').textContent=p.mw;$('o3').textContent=p.tw;$('o4').textContent=p.loss;
+ draw(p,TR,p.tw,50,120);$('bub').setAttribute('opacity',0);$('stage').textContent='Tayyor';
+ ['rt','rc','rj','rd'].forEach(function(i){$(i).textContent='–'})}
+function run(){cancelAnimationFrame(raf);var p=P(),t0=null;
+ var ti=(p.m*p.c*100+p.mw*4200*p.tw)/(p.m*p.c+p.mw*4200);
+ var tm=ti-p.loss/100*(ti-p.tw);
+ var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches,D=reduce?10:9000;
+ function st(ts){if(!t0)t0=ts;var q=Math.min(1,(ts-t0)/D);
+  if(q<0.35){var e=q/0.35;$('stage').textContent='1. Jism qaynoq suvda qizdirilmoqda';$('bub').setAttribute('opacity',1);
+   draw(p,TR+(100-TR)*e,p.tw,50,120)}
+  else if(q<0.55){var f=(q-0.35)/0.2;$('stage').textContent='2. Jism kalorimetrga o\'tkazilmoqda';$('bub').setAttribute('opacity',0);
+   draw(p,100,p.tw,50+(240-50)*f,120-60*Math.sin(Math.PI*f)+(160-120)*f*f*0+30*f)}
+  else{var g=(q-0.55)/0.45;g=1-Math.pow(1-g,2);$('stage').textContent='3. Issiqlik almashinuvi, muvozanat tomon';
+   draw(p,100+(tm-100)*g,p.tw+(tm-p.tw)*g,240,150)}
+  if(q<1)raf=requestAnimationFrame(st);else{
+   var c=4200*p.mw*(tm-p.tw)/(p.m*(100-tm)),d=Math.abs(c-p.c)/p.c*100;
+   $('stage').textContent='Tajriba tugadi';
+   $('rt').textContent=R(tm,1)+' °C';$('rc').textContent=Math.round(c)+' J/(kg·°C)';
+   $('rj').textContent=p.c+' J/(kg·°C)';$('rd').textContent=R(d,1)+' %'}}
+ raf=requestAnimationFrame(st)}
+['mat','ms','mw','tw0','loss'].forEach(function(i){$(i).oninput=reset;$(i).onchange=reset});
+$('go').onclick=run;$('rs').onclick=reset;reset();
+$('calc').onclick=function(){
+ var m=+$('a1').value,tj=+$('a2').value,ms=+$('a3').value,ts=+$('a4').value,t=+$('a5').value,cj=+$('a6').value,o=$('cout');
+ if(!(m>0)||!(ms>0)||!(tj>t)||!(t>ts)||!(cj>0)){o.textContent='Qiymatlarni tekshiring: massalar > 0 va t_j > t > t_s bo\'lishi kerak.';return}
+ var c=4200*ms*(t-ts)/(m*(tj-t)),dc=Math.abs(c-cj),d=dc/cj*100;
+ o.textContent='c = '+Math.round(c)+' J/(kg·°C); Δc = '+Math.round(dc)+'; δ = '+R(d,1)+' %'}
+</script>
+</body>
+</html>

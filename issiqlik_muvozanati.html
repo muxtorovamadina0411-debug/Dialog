@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>9-sinf fizika: Jismlarda issiqlik muvozanatini o'rganish</title>
+<style>
+:root{--bg:#f7f9fb;--card:#fff;--ink:#14263a;--mute:#5a6b7d;--line:#d9e1e9;--hot:#e2563b;--cold:#2f7fd1;--acc:#0f6e72;--soft:#e8f3f3}
+@media (prefers-color-scheme:dark){:root{--bg:#10181f;--card:#18232c;--ink:#e6edf3;--mute:#9db0c0;--line:#2a3a47;--soft:#14343a;--acc:#4fc3c8}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Georgia,"Times New Roman",serif}
+main{max-width:760px;margin:0 auto;padding:20px 16px 60px}
+h1{font:700 26px/1.25 system-ui,sans-serif;margin:8px 0 4px}
+h2{font:600 20px/1.3 system-ui,sans-serif;margin:0 0 10px;color:var(--acc)}
+.sub{color:var(--mute);font:14px system-ui,sans-serif;margin:0 0 20px}
+section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin:16px 0}
+.f{background:var(--soft);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:18px;text-align:center}
+ul,ol{padding-left:22px;margin:8px 0}
+table{width:100%;border-collapse:collapse;font:14px system-ui,sans-serif;margin:10px 0}
+th,td{border:1px solid var(--line);padding:8px;text-align:center}
+th{background:var(--soft)}
+td.e{height:30px}
+.sim label{display:block;font:14px system-ui,sans-serif;color:var(--mute);margin:6px 0}
+.sim b{color:var(--ink)}
+.sim input[type=range]{width:100%;accent-color:var(--acc)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 18px}
+button{font:600 15px system-ui,sans-serif;padding:10px 16px;border-radius:8px;border:1px solid var(--acc);background:var(--acc);color:#fff;cursor:pointer}
+button.o{background:transparent;color:var(--acc)}
+button:focus-visible,input:focus-visible{outline:3px solid var(--cold);outline-offset:2px}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;font-family:system-ui,sans-serif}
+.res div{background:var(--soft);border-radius:8px;padding:10px;font-size:12px;color:var(--mute)}
+.res strong{display:block;font-size:18px;color:var(--ink)}
+details{border-top:1px solid var(--line);padding:8px 0}
+summary{cursor:pointer;font-weight:600}
+.ans{color:var(--acc);margin:6px 0 0}
+</style>
+</head>
+<body>
+<main>
+<h1>Jismlarda issiqlik muvozanatini o'rganish</h1>
+<p class="sub">9-sinf fizika · 1-bob · 19-§ Amaliy mashg'ulot</p>
+
+<section>
+<h2>1. Nazariy asos</h2>
+<p>Issiq jism sovuq jism bilan tutashsa, issiqlik issiqdan sovuqqa o'tadi. Temperaturalar tenglashganda issiqlik almashinuvi to'xtaydi. Bu holat <b>issiqlik muvozanati</b> deyiladi.</p>
+<div class="f">Q<sub>berilgan</sub> = Q<sub>olingan</sub></div>
+<div class="f">c·m₁(t₁ − t) = c·m₂(t − t₂)</div>
+<div class="f">t = (m₁t₁ + m₂t₂) / (m₁ + m₂)</div>
+<p>Bu yerda Q = cmΔt, suv uchun c = 4200 J/(kg·°C). Formula bir xil suyuqlik aralashganda ishlaydi.</p>
+</section>
+
+<section class="sim">
+<h2>Animatsion simulyatsiya</h2>
+<svg viewBox="0 0 340 170" width="100%" role="img" aria-label="Issiq va sovuq suv kalorimetrda aralashadi">
+<rect x="15" y="40" width="70" height="100" rx="4" fill="none" stroke="var(--mute)" stroke-width="1.5"/>
+<rect id="w1" x="16" y="140" width="68" height="0"/>
+<rect x="255" y="40" width="70" height="100" rx="4" fill="none" stroke="var(--mute)" stroke-width="1.5"/>
+<rect id="w2" x="256" y="140" width="68" height="0"/>
+<rect x="115" y="20" width="110" height="120" rx="6" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+<rect id="c1" x="117" y="138" width="106" height="0"/>
+<rect id="c2" x="117" y="138" width="106" height="0"/>
+<line x1="170" y1="5" x2="170" y2="100" stroke="var(--ink)" stroke-width="3"/>
+<circle cx="170" cy="105" r="5" fill="#e2563b"/>
+<g font-size="12" fill="var(--mute)" text-anchor="middle" font-family="system-ui,sans-serif">
+<text x="50" y="155">Issiq suv</text><text x="290" y="155">Sovuq suv</text><text x="170" y="155">Kalorimetr</text></g>
+<g font-size="13" fill="var(--ink)" text-anchor="middle" font-family="system-ui,sans-serif">
+<text id="l1" x="50" y="32"></text><text id="l2" x="290" y="32"></text><text id="lt" x="170" y="168" font-weight="700"></text></g>
+</svg>
+<div class="grid">
+<label>m₁ (issiq): <b id="o1">200</b> g<input type="range" id="m1" min="50" max="300" step="10" value="200"></label>
+<label>t₁: <b id="o2">80</b> °C<input type="range" id="t1" min="40" max="100" step="1" value="80"></label>
+<label>m₂ (sovuq): <b id="o3">100</b> g<input type="range" id="m2" min="50" max="300" step="10" value="100"></label>
+<label>t₂: <b id="o4">20</b> °C<input type="range" id="t2" min="0" max="30" step="1" value="20"></label>
+</div>
+<p><button id="go">Aralashtirish</button> <button id="rs" class="o">Qayta</button></p>
+<div class="res">
+<div>Q berilgan<strong id="q1">–</strong></div>
+<div>Q olingan<strong id="q2">–</strong></div>
+<div style="grid-column:1/3">Muvozanat temperaturasi<strong id="te">–</strong></div>
+</div>
+</section>
+
+<section>
+<h2>2. Jihozlar</h2>
+<ul>
+<li>Kalorimetr</li><li>Termometr (0–100 °C)</li><li>Ikkita stakan, o'lchov silindri yoki tarozi</li>
+<li>Issiq suv (70–80 °C) va sovuq suv (15–20 °C)</li><li>Aralashtirgich, daftar</li>
+</ul>
+<p><b>Xavfsizlik:</b> issiq suvni ehtiyotkorlik bilan quying, kuyishdan saqlaning.</p>
+</section>
+
+<section>
+<h2>3. Tajriba bosqichlari</h2>
+<ol>
+<li>Sovuq suvdan m₂ = 100 g o'lchab kalorimetrga quying va t₂ ni yozing.</li>
+<li>Issiq suvdan m₁ = 200 g o'lchab, t₁ ni yozing.</li>
+<li>Issiq suvni kalorimetrga quyib, sekin aralashtiring.</li>
+<li>Termometr o'zgarmay qolganda muvozanat temperaturasi t ni yozing.</li>
+<li>Massalarni o'zgartirib tajribani 3 marta takrorlang.</li>
+</ol>
+</section>
+
+<section>
+<h2>4. Natijalar va hisob-kitob</h2>
+<table>
+<tr><th>№</th><th>m₁ (g)</th><th>t₁ (°C)</th><th>m₂ (g)</th><th>t₂ (°C)</th><th>t tajriba</th><th>t nazariy</th></tr>
+<tr><td>1</td><td class="e"></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>2</td><td class="e"></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>3</td><td class="e"></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+<p><b>Namuna:</b> m₁ = 200 g, t₁ = 80 °C, m₂ = 100 g, t₂ = 20 °C bo'lsa, t = (200·80 + 100·20)/300 = <b>60 °C</b>. Q<sub>berilgan</sub> = 4,2·200·20 = 16 800 J, Q<sub>olingan</sub> = 4,2·100·40 = 16 800 J.</p>
+<p>Nisbiy xatolik: δ = |t<sub>nazariy</sub> − t<sub>tajriba</sub>| / t<sub>nazariy</sub> · 100 %.</p>
+<p><b>Xulosa:</b> issiqlik yo'qotilmasa, berilgan va olingan issiqlik miqdorlari teng. Farq issiqlikning kalorimetr devori va havoga sochilishidan kelib chiqadi.</p>
+</section>
+
+<section>
+<h2>Savollar</h2>
+<details><summary>1. Issiqlik muvozanati nima?</summary><p class="ans">Jismlar temperaturasi tenglashib, issiqlik almashinuvi to'xtagan holat.</p></details>
+<details><summary>2. Nima uchun kalorimetr ishlatiladi?</summary><p class="ans">Issiqlikning atrofga yo'qolishini kamaytirish uchun.</p></details>
+<details><summary>3. Massalar teng bo'lsa, t nimaga teng?</summary><p class="ans">Boshlang'ich temperaturalarning o'rtachasiga: t = (t₁ + t₂)/2.</p></details>
+<details><summary>4. Tajriba natijasi nega nazariydan past chiqadi?</summary><p class="ans">Issiqlikning bir qismi kalorimetr, termometr va havoga ketadi.</p></details>
+<details><summary>5. Simulyatsiyada m₁ oshsa, t qanday o'zgaradi?</summary><p class="ans">t ortadi va t₁ ga yaqinlashadi, chunki issiq suv ko'proq issiqlik beradi.</p></details>
+</section>
+
+<section>
+<h2>Masalalar</h2>
+<details><summary>1. 300 g suv 90 °C da, 200 g suv 20 °C da. t = ?</summary><p class="ans">t = (300·90 + 200·20)/500 = 62 °C</p></details>
+<details><summary>2. 2 kg suv 80 °C da, unga 3 kg suv 30 °C da qo'shildi. t = ?</summary><p class="ans">t = (2·80 + 3·30)/5 = 50 °C</p></details>
+<details><summary>3. 100 g suv 10 °C dan 40 °C gacha isishi uchun qancha issiqlik kerak?</summary><p class="ans">Q = 4200·0,1·30 = 12 600 J</p></details>
+</section>
+
+<section>
+<h2>Uyga vazifa</h2>
+<ol>
+<li>§19 ni o'qing, muvozanat tenglamasini daftarga yozing.</li>
+<li>Yuqoridagi 2- va 3-masalani to'liq yechim bilan bajaring.</li>
+<li>Uyda: iliq va sovuq suvni aralashtirib, t ni oldindan hisoblang va termometr bilan solishtiring.</li>
+<li>Simulyatsiyada 3 xil qiymat tanlab, natijalarni jadvalga yozing va Q<sub>berilgan</sub> bilan Q<sub>olingan</sub> ni solishtiring.</li>
+<li>Qo'shimcha: termos issiqni nega uzoq saqlaydi? 3–4 gapda yozing.</li>
+</ol>
+</section>
+</main>
+<script>
+var $=function(i){return document.getElementById(i)},raf=null;
+function col(T){var f=Math.max(0,Math.min(1,T/100)),a=[47,127,209],b=[226,86,59];return 'rgb('+a.map(function(v,i){return Math.round(v+(b[i]-v)*f)}).join(',')+')'}
+function P(){return{m1:+$('m1').value,t1:+$('t1').value,m2:+$('m2').value,t2:+$('t2').value}}
+function set(id,y,h,c){var e=$(id);e.setAttribute('y',y);e.setAttribute('height',h);e.setAttribute('fill',c)}
+function draw(p,T1,T2,f){
+ var hb=function(m){return m/300*90},hc=function(m){return m/600*100};
+ set('w1',140-hb(p.m1)*(1-f),hb(p.m1)*(1-f),col(p.t1));
+ set('w2',140-hb(p.m2)*(1-f),hb(p.m2)*(1-f),col(p.t2));
+ var h2=hc(p.m2)*f,h1=hc(p.m1)*f;
+ set('c2',138-h2,h2,col(T2));set('c1',138-h2-h1,h1,col(T1));
+}
+function reset(){cancelAnimationFrame(raf);var p=P();
+ $('o1').textContent=p.m1;$('o2').textContent=p.t1;$('o3').textContent=p.m2;$('o4').textContent=p.t2;
+ draw(p,p.t1,p.t2,0);$('l1').textContent=p.t1+' °C';$('l2').textContent=p.t2+' °C';$('lt').textContent='';
+ $('q1').textContent='–';$('q2').textContent='–';$('te').textContent='–'}
+function run(){cancelAnimationFrame(raf);var p=P(),te=(p.m1*p.t1+p.m2*p.t2)/(p.m1+p.m2),t0=null;
+ var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches,D=reduce?10:5000;
+ function st(ts){if(!t0)t0=ts;var q=Math.min(1,(ts-t0)/D),f=Math.min(1,q/0.3),e=q<0.3?0:(q-0.3)/0.7;e=1-Math.pow(1-e,2);
+  var T1=p.t1+(te-p.t1)*e,T2=p.t2+(te-p.t2)*e;draw(p,T1,T2,f);
+  $('lt').textContent=q<0.3?'':(Math.round((T1*p.m1+T2*p.m2)/(p.m1+p.m2)*10)/10)+' °C';
+  if(q<1)raf=requestAnimationFrame(st);else{
+   $('q1').textContent=Math.round(4.2*p.m1*(p.t1-te))+' J';
+   $('q2').textContent=Math.round(4.2*p.m2*(te-p.t2))+' J';
+   $('te').textContent=(Math.round(te*10)/10)+' °C'}}
+ raf=requestAnimationFrame(st)}
+['m1','t1','m2','t2'].forEach(function(i){$(i).oninput=reset});
+$('go').onclick=run;$('rs').onclick=reset;reset();
+</script>
+</body>
+</html>
