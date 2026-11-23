@@ -1,0 +1,806 @@
+```html
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>9-sinf Fizika Darsligi — Simulatsiyalar va Ketma-ket Testlar (Dialog)</title>
+  <style>
+    :root {
+      --bg-page: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-subtle: #f1f5f9;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-soft: #64748b;
+      --border: #e2e8f0;
+      --border-strong: #cbd5e1;
+      --primary: #0284c7;
+      --primary-hover: #0369a1;
+      --primary-soft: #e0f2fe;
+      --primary-text: #075985;
+      --success: #059669;
+      --success-soft: #d1fae5;
+      --success-text: #065f46;
+      --warning: #d97706;
+      --warning-soft: #fef3c7;
+      --warning-text: #92400e;
+      --danger: #dc2626;
+      --danger-soft: #fee2e2;
+      --danger-text: #991b1b;
+      --purple: #7c3aed;
+      --purple-soft: #ede9fe;
+      --purple-text: #5b21b6;
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+
+    html.dark {
+      --bg-page: #0b1120;
+      --bg-surface: #111827;
+      --bg-subtle: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+      --text-soft: #94a3b8;
+      --border: #1e293b;
+      --border-strong: #334155;
+      --primary: #38bdf8;
+      --primary-hover: #0ea5e9;
+      --primary-soft: rgba(56, 189, 248, 0.14);
+      --primary-text: #7dd3fc;
+      --success: #34d399;
+      --success-soft: rgba(52, 211, 153, 0.14);
+      --success-text: #6ee7b7;
+      --warning: #fbbf24;
+      --warning-soft: rgba(251, 191, 36, 0.14);
+      --warning-text: #fde68a;
+      --danger: #f87171;
+      --danger-soft: rgba(248, 113, 113, 0.14);
+      --danger-text: #fca5a5;
+      --purple: #a78bfa;
+      --purple-soft: rgba(167, 139, 250, 0.14);
+      --purple-text: #ddd6fe;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+      --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, select {
+      font: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* Header */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .topbar-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 3px 8px rgba(2, 132, 199, 0.3);
+    }
+
+    .brand-text h1 {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-text p {
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    .header-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 13px;
+      border-radius: 10px;
+      font-size: 12.5px;
+      font-weight: 600;
+      border: 1px solid var(--border-strong);
+      background: var(--bg-surface);
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      min-height: 36px;
+    }
+
+    .btn:hover {
+      background: var(--bg-subtle);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+
+    html.dark .btn-primary {
+      color: #082f49;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      border-color: var(--primary-hover);
+    }
+
+    .btn-warning {
+      background: var(--warning-soft);
+      border-color: rgba(217, 119, 6, 0.35);
+      color: var(--warning-text);
+    }
+
+    .btn-success {
+      background: var(--success-soft);
+      border-color: rgba(5, 150, 105, 0.35);
+      color: var(--success-text);
+    }
+
+    /* Banner */
+    .toast-wrap {
+      margin-top: 12px;
+      display: none;
+    }
+
+    .toast-wrap.show {
+      display: block;
+    }
+
+    .toast {
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-strong);
+      background: var(--primary-soft);
+      color: var(--primary-text);
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .toast.warn {
+      background: var(--warning-soft);
+      color: var(--warning-text);
+      border-color: rgba(217, 119, 6, 0.35);
+    }
+
+    .toast.ok {
+      background: var(--success-soft);
+      color: var(--success-text);
+      border-color: rgba(5, 150, 105, 0.35);
+    }
+
+    /* Progress & Summary Strip */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      gap: 14px;
+      margin: 18px 0;
+    }
+
+    @media (min-width: 768px) {
+      .overview-grid {
+        grid-template-columns: 1.5fr 1fr;
+      }
+    }
+
+    .card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .progress-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 10px;
+      background: var(--bg-subtle);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #0284c7, #10b981);
+      border-radius: 999px;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .stat-pill {
+      background: var(--bg-subtle);
+      padding: 10px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .stat-pill .num {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .stat-pill .lbl {
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-top: 2px;
+    }
+
+    /* Filter & Search Bar */
+    .controls-bar {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      margin-bottom: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    @media (min-width: 900px) {
+      .controls-bar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .tabs-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tab-btn {
+      padding: 7px 12px;
+      border-radius: 10px;
+      font-size: 12.5px;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+
+    html.dark .tab-btn.active {
+      color: #082f49;
+    }
+
+    .search-filter-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .input-control {
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border-strong);
+      background: var(--bg-page);
+      color: var(--text-main);
+      font-size: 13px;
+      min-height: 36px;
+    }
+
+    .input-control:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 1px;
+    }
+
+    /* Quarter Section */
+    .quarter-section {
+      margin-bottom: 26px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .quarter-banner {
+      padding: 16px 20px;
+      background: var(--bg-subtle);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .quarter-title-wrap h2 {
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .quarter-title-wrap p {
+      font-size: 12.5px;
+      color: var(--text-soft);
+      margin-top: 2px;
+    }
+
+    .quarter-badge {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary-text);
+    }
+
+    .sequence-flow {
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Lesson / Test Step Row */
+    .step-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      background: var(--bg-surface);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.12s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    @media (min-width: 768px) {
+      .step-card {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .step-card:hover {
+      border-color: var(--border-strong);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .step-card.completed {
+      border-color: rgba(5, 150, 105, 0.45);
+      background: linear-gradient(to right, var(--success-soft), var(--bg-surface) 38%);
+    }
+
+    .step-card.locked {
+      opacity: 0.65;
+      background: var(--bg-subtle);
+    }
+
+    .step-card.special-entry {
+      border-left: 4px solid #f59e0b;
+    }
+
+    .step-card.special-exam {
+      border-left: 4px solid #7c3aed;
+    }
+
+    .step-left {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-strong);
+      font-size: 12.5px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .step-card.completed .step-num {
+      background: var(--success);
+      border-color: var(--success);
+      color: #ffffff;
+    }
+
+    .step-info {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .badges-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 5px;
+    }
+
+    .type-badge {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      padding: 2.5px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+
+    .badge-entry {
+      background: var(--warning-soft);
+      color: var(--warning-text);
+    }
+
+    .badge-topic {
+      background: var(--primary-soft);
+      color: var(--primary-text);
+    }
+
+    .badge-lab {
+      background: var(--success-soft);
+      color: var(--success-text);
+    }
+
+    .badge-problem {
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+      border: 1px solid var(--border-strong);
+    }
+
+    .badge-exam {
+      background: var(--purple-soft);
+      color: var(--purple-text);
+    }
+
+    .badge-truncated {
+      background: var(--danger-soft);
+      color: var(--danger-text);
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 6px;
+    }
+
+    .step-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      word-break: break-word;
+    }
+
+    .step-file {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 11.5px;
+      color: var(--text-soft);
+      margin-top: 3px;
+      word-break: break-all;
+    }
+
+    .step-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(3px);
+      z-index: 60;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-strong);
+      border-radius: 18px;
+      width: 100%;
+      max-width: 720px;
+      max-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+
+    .modal-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .modal-header h3 {
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .modal-body {
+      padding: 18px 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .modal-footer {
+      padding: 14px 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+      background: var(--bg-subtle);
+    }
+
+    .edit-row {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--bg-page);
+    }
+
+    .edit-row label {
+      font-size: 12.5px;
+      font-weight: 700;
+    }
+
+    .edit-row small {
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border);
+      padding: 16px 0;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Navigation Header -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-logo">9F</div>
+        <div class="brand-text">
+          <h1>9-sinf Fizika Darsligi — Dialog</h1>
+          <p>Kiruvchi testlar, simulyatsiyalar, laboratoriyalar va chorak imtihonlari</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button type="button" id="freeModeBtn" class="btn btn-warning" title="Ketma-ketlik yoki erkin o'tish rejimi">
+          Ketma-ketlik: Yoniq
+        </button>
+        <button type="button" id="openLinkEditorBtn" class="btn" title="Qisqargan fayl nomlarini tekshirish va tahrirlash">
+          Fayl nomlarini sozlash
+        </button>
+        <button type="button" id="downloadIndexBtn" class="btn btn-primary" title="Tayyor index.html faylini yuklab olish">
+          index.html yuklab olish
+        </button>
+        <button type="button" id="themeToggleBtn" class="btn" aria-label="Mavzuni o'zgartirish">
+          Tun / Kun
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Status Toast -->
+    <div id="toastWrap" class="toast-wrap" role="status" aria-live="polite">
+      <div id="toastBox" class="toast">
+        <span id="toastText"></span>
+        <button type="button" id="toastCloseBtn" class="btn" style="padding: 4px 10px; min-height: 28px;">Yopish</button>
+      </div>
+    </div>
+
+    <!-- Progress & Overview Cards -->
+    <section class="overview-grid" aria-label="O'quv ko'rsatkichlari">
+      <div class="card">
+        <div class="progress-header">
+          <div>
+            <strong style="font-size: 15px;">Umumiy o'zlashtirish ko'rsatkichi</strong>
+            <p style="font-size: 12px; color: var(--text-soft);">
+              Har bir chorak: Kiruvchi test &rarr; Mavzular &amp; Simulyatsiyalar &rarr; Yakuniy nazorat
+            </p>
+          </div>
+          <span id="overallPercent" style="font-size: 20px; font-weight: 800; color: var(--primary);">0%</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div id="overallBar" class="progress-bar-fill"></div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-pill">
+            <div class="num" id="statCompleted">0</div>
+            <div class="lbl">Bajarilgan</div>
+          </div>
+          <div class="stat-pill">
+            <div class="num" id="statTotal">50</div>
+            <div class="lbl">Jami fayllar</div>
+          </div>
+          <div class="stat-pill">
+            <div class="num" id="statQuarters">4</div>
+            <div class="lbl">Choraklar</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; gap: 10px;">
+        <div>
+          <strong style="font-size: 14.5px;">GitHub Repozitoriy Boshqaruvi</strong>
+          <p style="font-size: 12.5px; color: var(--text-muted); margin-top: 4px;">
+            Ushbu <code>index.html</code> faylini <strong>muxtorovamadina0411-debug/Dialog</strong> repozitoriysining asosiy (root) papkasiga yuklang. Barcha sahifalar nisbiy havola orqali ishlaydi.
+          </p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <a
+            href="https://github.com/muxtorovamadina0411-debug/Dialog"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn"
+          >
+            GitHub Repozitoriy &nearr;
+          </a>
+          <button type="button" id="resetProgressBtn" class="btn" style="color: var(--danger);">
+            Progressni tozalash
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search & Filter Controls -->
+    <section class="controls-bar" aria-label="Qidiruv va filtrlash">
+      <div class="tabs-group" id="quarterTabs">
+        <button type="button" class="tab-btn active" data-quarter="all">Barcha choraklar</button>
+        <button type="button" class="tab-btn" data-quarter="1">I-chorak</button>
+        <button type="button" class="tab-btn" data-quarter="2">II-chorak</button>
+        <button type="button" class="tab-btn" data-quarter="3">III-chorak</button>
+        <button type="button" class="tab-btn" data-quarter="4">IV-chorak</button>
+      </div>
+
+      <div class="search-filter-wrap">
+        <select id="typeFilter" class="input-control" aria-label="Bo'lim turi bo'yicha saralash">
+          <option value="all">Barcha turlar</option>
+          <option value="entry">Kiruvchi testlar</option>
+          <option value="topic">Mavzular &amp; Simulyatsiyalar</option>
+          <option value="lab">Laboratoriya ishlari</option>
+          <option value="problem">Masalalar to'plami</option>
+          <option value="exam">Yakuniy nazorat testlari</option>
+        </select>
+
+        <input
+          type="search"
+          id="searchInput"
+          class="input-control"
+          placeholder="Mavzu yoki fayl nomini qidiring..."
+ 
